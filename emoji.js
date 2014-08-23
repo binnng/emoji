@@ -127,3 +127,26 @@ if (typeof $ !== 'undefined') {
 		});
 	};
 }
+
+if (typeof angular !== 'undefined') {
+	angular.module("binnng.emoji", [])
+		.directive("p", function() {
+	    return {
+	      link: function(scope, element, attrs) {
+	        element = element[0];
+	        if (element && element.innerHTML !== "") {
+	          return Emoji.emoji(element);
+	        }
+	      },
+	      restrict: "E"
+	    };
+	  }).factory("$emoji", function() {
+	    return {
+	      emoji: Emoji.emoji,
+	      trans: Emoji.trans,
+	      setEmojiPath: function(path) {
+	        return Emoji.emojiPath = path;
+	      }
+	    };
+	  });
+}

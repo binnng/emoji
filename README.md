@@ -41,6 +41,25 @@ http://coocy.github.io/emoji
 $('#text').emoji();
 ```
 
+如果项目使用了[angular](https://github.com/angular/angular.js)，可以这样调用:
+```javascript
+var myApp = angular.module("myApp", ["binnng.emoji"]);
+```
+
+```javascript
+myApp.controller("mainCtrl", function($scope, $emoji) {
+
+	// 设置emoji表情图片路径
+	$emoji.setEmojiPath("images/emoji/");
+
+	text = "The text with emoji.";
+
+	$scope.text = $emoji.emoji(text);
+});
+```
+
+注意：使用第一种方式，默认检查所有**p标签**，所以要保证包含emoji表情的文本在p标签内。
+
 ## 重新生成代码和表情图片
 
 需要安装[Node.js](http://nodejs.org/)和[ImageMagick](http://www.imagemagick.org/)
